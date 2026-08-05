@@ -14,6 +14,8 @@
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
@@ -195,18 +197,61 @@ AI Festival Traffic Management Dashboard
 
 </section>
 
-<!-- Charts Section Starts Here -->
+<!-- Charts Section -->
 
 <section class="charts">
 
-<!-- Part 2 -->
+    <div class="chart-card">
+        <h3>Traffic Trend</h3>
+        <canvas id="trafficChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+        <h3>Vehicle Count by Road</h3>
+        <canvas id="vehicleChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+        <h3>Traffic Distribution</h3>
+        <canvas id="pieChart"></canvas>
+    </div>
 
 </section>
 
+<!-- Summary Section -->
+
+<section class="summary">
+
+    <div class="summary-card">
+        <h3>Today's Traffic Summary</h3>
+
+        <p><strong>Total Vehicles:</strong> 245</p>
+
+        <p><strong>Congested Roads:</strong> 8</p>
+
+        <p><strong>Available Parking:</strong> 120</p>
+
+        <p><strong>Emergency Alerts:</strong> 2</p>
+    </div>
+
+    <div class="summary-card">
+
+        <h3>AI Recommendation</h3>
+
+        <p>Heavy traffic detected near Temple Road.</p>
+
+        <p>Suggested Route:</p>
+
+        <p><strong>Temple Road → Ring Road → Bus Stand Road</strong></p>
+
+        <p>Status: Medium Traffic</p>
+
+    </div>
+
+</section>
 </div>
 
 <script src="js/dashboard.js"></script>
 
 </body>
-
 </html>
