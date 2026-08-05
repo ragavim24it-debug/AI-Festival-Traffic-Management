@@ -1,0 +1,164 @@
+/* ===========================
+   Dashboard CSS - Part 1
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+/* Sidebar */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:250px;
+    height:100vh;
+    background:#0f172a;
+    color:white;
+    overflow:auto;
+}
+
+.logo{
+    text-align:center;
+    padding:25px;
+    font-size:24px;
+    font-weight:bold;
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.sidebar ul{
+    list-style:none;
+    margin-top:20px;
+}
+
+.sidebar ul li{
+    margin:8px 15px;
+}
+
+.sidebar ul li a{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    transition:.3s;
+    font-size:17px;
+}
+
+.sidebar ul li a:hover{
+    background:#2563eb;
+}
+
+.sidebar ul li.active a{
+    background:#2563eb;
+}
+
+.sidebar i{
+    width:25px;
+    text-align:center;
+}
+
+/* Main */
+
+.main{
+    margin-left:250px;
+    padding:25px;
+}
+
+/* Header */
+
+header{
+    background:white;
+    padding:18px 25px;
+    border-radius:12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.search input{
+    width:320px;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    outline:none;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    font-size:22px;
+    color:#0f172a;
+}
+
+.profile span{
+    font-size:17px;
+    font-weight:600;
+}
+
+/* Welcome */
+
+.welcome{
+    margin-top:30px;
+}
+
+.welcome h1{
+    font-size:34px;
+    color:#0f172a;
+}
+
+.welcome p{
+    margin-top:10px;
+    color:#666;
+    font-size:18px;
+}
+
+/* Cards */
+
+.cards{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card i{
+    font-size:45px;
+    color:#2563eb;
+    margin-bottom:15px;
+}
+
+.card h2{
+    font-size:34px;
+    color:#0f172a;
+}
+
+.card p{
+    margin-top:8px;
+    color:#666;
+}
