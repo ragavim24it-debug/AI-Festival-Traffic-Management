@@ -1,0 +1,598 @@
+/* ==========================================
+   AI FESTIVAL TRAFFIC MANAGEMENT
+   LIVE MAP CSS
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #172033;
+}
+
+/* NAVBAR */
+
+.navbar {
+    height: 75px;
+    background: #08152e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: #2563eb;
+    color: white;
+}
+
+/* HEADER */
+
+.map-header {
+    text-align: center;
+    padding: 60px 20px 80px;
+    color: white;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(14,165,233,.35), transparent 30%),
+        linear-gradient(135deg, #07111f, #1e3a8a, #0f172a);
+}
+
+.map-header span {
+    color: #7dd3fc;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.map-header h1 {
+    font-size: 46px;
+    margin: 14px 0;
+}
+
+.map-header p {
+    color: #cbd5e1;
+}
+
+/* MAIN */
+
+.map-container {
+    width: 90%;
+    max-width: 1250px;
+    margin: -40px auto 60px;
+    position: relative;
+}
+
+/* CONTROLS */
+
+.map-controls {
+    background: white;
+    border-radius: 18px;
+    padding: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 10px 30px rgba(15,23,42,.1);
+}
+
+.control-title h2 {
+    font-size: 19px;
+}
+
+.control-title h2 i {
+    color: #2563eb;
+    margin-right: 7px;
+}
+
+.control-title p {
+    color: #64748b;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.map-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.map-filter {
+    border: 1px solid #dbe2ea;
+    background: white;
+    color: #475569;
+    padding: 10px 14px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.map-filter:hover,
+.map-filter.active {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+/* MAP */
+
+.map-area {
+    height: 620px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background:
+        linear-gradient(35deg, transparent 47%, #d8dee8 48%, #d8dee8 52%, transparent 53%),
+        linear-gradient(-30deg, transparent 47%, #d8dee8 48%, #d8dee8 52%, transparent 53%),
+        #dcefe2;
+    box-shadow: 0 12px 35px rgba(15,23,42,.12);
+}
+
+/* MAP GRID */
+
+.map-area::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .5;
+    background-image:
+        linear-gradient(#b8d4be 1px, transparent 1px),
+        linear-gradient(90deg, #b8d4be 1px, transparent 1px);
+    background-size: 55px 55px;
+}
+
+/* ROADS */
+
+.road {
+    position: absolute;
+    background: #64748b;
+    border: 7px solid #f8fafc;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15);
+    z-index: 2;
+}
+
+.road-1 {
+    width: 115%;
+    height: 65px;
+    top: 180px;
+    left: -8%;
+    transform: rotate(10deg);
+}
+
+.road-2 {
+    width: 110%;
+    height: 55px;
+    top: 390px;
+    left: -5%;
+    transform: rotate(-13deg);
+}
+
+.road-3 {
+    height: 110%;
+    width: 55px;
+    top: -5%;
+    left: 46%;
+    transform: rotate(12deg);
+}
+
+.road-4 {
+    height: 110%;
+    width: 45px;
+    top: -5%;
+    left: 72%;
+    transform: rotate(-18deg);
+}
+
+/* LOCATION MARKERS */
+
+.location-marker {
+    position: absolute;
+    z-index: 20;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.25);
+    transition: .3s;
+}
+
+.location-marker:hover {
+    transform: scale(1.18);
+}
+
+.location-marker span {
+    position: absolute;
+    top: 53px;
+    white-space: nowrap;
+    background: white;
+    color: #172033;
+    padding: 6px 10px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(0,0,0,.15);
+}
+
+/* TRAFFIC */
+
+.traffic.high {
+    background: #dc2626;
+    top: 28%;
+    left: 22%;
+}
+
+.traffic.medium {
+    background: #f59e0b;
+    top: 58%;
+    left: 54%;
+}
+
+.traffic.low {
+    background: #16a34a;
+    top: 20%;
+    left: 72%;
+}
+
+/* PARKING */
+
+.parking {
+    background: #2563eb;
+    top: 68%;
+    left: 27%;
+}
+
+.parking-two {
+    top: 38%;
+    left: 82%;
+}
+
+/* EMERGENCY */
+
+.emergency {
+    background: #7c3aed;
+    top: 67%;
+    left: 70%;
+    animation: emergencyPulse 1.5s infinite;
+}
+
+@keyframes emergencyPulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(124,58,237,.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 18px rgba(124,58,237,0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(124,58,237,0);
+    }
+
+}
+
+/* FESTIVAL CENTER */
+
+.festival-center {
+    position: absolute;
+    z-index: 10;
+    top: 43%;
+    left: 43%;
+    background: white;
+    padding: 13px 18px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.2);
+    text-align: center;
+}
+
+.festival-center i {
+    display: block;
+    color: #dc2626;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.festival-center strong {
+    font-size: 12px;
+}
+
+/* POPUP */
+
+.map-popup {
+    position: absolute;
+    z-index: 100;
+    right: 25px;
+    top: 25px;
+    width: 270px;
+    background: white;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(0,0,0,.2);
+    display: none;
+}
+
+.map-popup.show {
+    display: block;
+    animation: popup .25s ease;
+}
+
+@keyframes popup {
+
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.close-popup {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    border: none;
+    background: #f1f5f9;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.popup-icon {
+    width: 48px;
+    height: 48px;
+    background: #dbeafe;
+    color: #2563eb;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.map-popup h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.map-popup > p {
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+.popup-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.popup-info div {
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 9px;
+}
+
+.popup-info span {
+    display: block;
+    font-size: 10px;
+    color: #64748b;
+    margin-bottom: 5px;
+}
+
+.popup-info strong {
+    font-size: 13px;
+}
+
+/* LEGEND */
+
+.legend-panel {
+    margin-top: 20px;
+    background: white;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 5px 20px rgba(15,23,42,.06);
+}
+
+.legend-panel h3 {
+    margin-bottom: 15px;
+}
+
+.legend-items {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    color: #475569;
+    font-size: 13px;
+}
+
+.legend-items div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.high-dot {
+    background: #dc2626;
+}
+
+.medium-dot {
+    background: #f59e0b;
+}
+
+.low-dot {
+    background: #16a34a;
+}
+
+.parking-dot {
+    background: #2563eb;
+}
+
+.emergency-dot {
+    background: #7c3aed;
+}
+
+/* STATUS */
+
+.road-status {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.status-card {
+    background: white;
+    border-radius: 15px;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 5px 20px rgba(15,23,42,.06);
+    transition: .3s;
+}
+
+.status-card:hover {
+    transform: translateY(-5px);
+}
+
+.status-card > i {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: #dbeafe;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.status-card span {
+    display: block;
+    color: #64748b;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.status-card strong {
+    font-size: 22px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #08111f;
+    color: white;
+    padding: 25px 7%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+footer span {
+    color: #64748b;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .map-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .road-status {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .map-header h1 {
+        font-size: 35px;
+    }
+
+    .map-container {
+        width: 94%;
+    }
+
+    .map-area {
+        height: 500px;
+    }
+
+    .map-popup {
+        right: 12px;
+        top: 12px;
+        width: 230px;
+    }
+
+    .road-status {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+}
