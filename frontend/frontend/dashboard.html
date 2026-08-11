@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | AI Festival Traffic Management</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            🚦 <span>AI Traffic</span>
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html" class="active">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-robot"></i>
+                <span>AI Prediction</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>Live Map</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Analytics</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-square-parking"></i>
+                <span>Parking</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-truck-medical"></i>
+                <span>Emergency</span>
+            </a>
+
+            <a href="index.html">
+                <i class="fa-solid fa-house-user"></i>
+                <span>Home</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h2>Traffic Dashboard</h2>
+
+                <p>Festival Traffic Monitoring System</p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search...">
+
+                </div>
+
+
+                <button class="notification-btn"
+                    onclick="showNotification()">
+
+                    <i class="fa-solid fa-bell"></i>
+
+                    <span>2</span>
+
+                </button>
+
+
+                <div class="admin">
+
+                    <i class="fa-solid fa-circle-user"></i>
+
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Traffic Manager</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME -->
+
+        <section class="welcome-box">
+
+            <div>
+
+                <span class="small-title">
+                    AI POWERED SYSTEM
+                </span>
+
+                <h1>
+                    Welcome back, Admin 👋
+                </h1>
+
+                <p>
+                    Monitor festival traffic, predict congestion
+                    and manage road conditions in real time.
+                </p>
+
+            </div>
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                System Online
+
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card blue">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-car"></i>
+                </div>
+
+                <div>
+
+                    <p>Total Vehicles</p>
+
+                    <h2>2,450</h2>
+
+                    <span>↑ 12.5% today</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card orange">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-road"></i>
+                </div>
+
+                <div>
+
+                    <p>Congested Roads</p>
+
+                    <h2>08</h2>
+
+                    <span>Needs attention</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card green">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-square-parking"></i>
+                </div>
+
+                <div>
+
+                    <p>Parking Available</p>
+
+                    <h2>120</h2>
+
+                    <span>32% available</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card red">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-truck-medical"></i>
+                </div>
+
+                <div>
+
+                    <p>Emergency Alerts</p>
+
+                    <h2>02</h2>
+
+                    <span>Active alerts</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHARTS -->
+
+        <section class="dashboard-grid">
+
+
+            <div class="panel large-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>Traffic Flow</h3>
+
+                        <p>Vehicle movement during festival hours</p>
+
+                    </div>
+
+                    <select id="trafficPeriod">
+
+                        <option>Today</option>
+                        <option>Yesterday</option>
+                        <option>This Week</option>
+
+                    </select>
+
+                </div>
+
+                <div class="chart-container">
+
+                    <canvas id="trafficChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>Traffic Distribution</h3>
+
+                        <p>Current road conditions</p>
+
+                    </div>
+
+                </div>
+
+                <div class="pie-container">
+
+                    <canvas id="trafficPie"></canvas>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- SECOND CHART -->
+
+        <section class="dashboard-grid">
+
+
+            <div class="panel large-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>Vehicles by Road</h3>
+
+                        <p>Current vehicle count</p>
+
+                    </div>
+
+                </div>
+
+                <div class="chart-container">
+
+                    <canvas id="vehicleChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel recommendation">
+
+                <div class="panel-header">
+
+                    <h3>🤖 AI Recommendation</h3>
+
+                </div>
+
+                <div class="recommendation-box">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    <h4>Heavy Traffic Detected</h4>
+
+                    <p>
+                        High traffic is predicted near
+                        Temple Road during the next hour.
+                    </p>
+
+                    <strong>
+                        Suggested Route
+                    </strong>
+
+                    <p>
+                        Temple Road → Ring Road
+                    </p>
+
+                    <button onclick="showRoute()">
+                        View Suggested Route
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- LIVE TRAFFIC TABLE -->
+
+        <section class="panel table-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h3>Live Traffic Status</h3>
+
+                    <p>Current road conditions</p>
+
+                </div>
+
+                <button class="refresh-btn"
+                    onclick="refreshTraffic()">
+
+                    <i class="fa-solid fa-rotate"></i>
+                    Refresh
+
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table id="trafficTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Road</th>
+                            <th>Vehicles</th>
+                            <th>Speed</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Temple Road</td>
+
+                            <td>245</td>
+
+                            <td>18 km/h</td>
+
+                            <td>
+                                <span class="badge danger">
+                                    High
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="view-btn"
+                                    onclick="viewRoad('Temple Road')">
+                                    View
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>Market Road</td>
+
+                            <td>180</td>
+
+                            <td>28 km/h</td>
+
+                            <td>
+                                <span class="badge warning">
+                                    Medium
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="view-btn"
+                                    onclick="viewRoad('Market Road')">
+                                    View
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>Ring Road</td>
+
+                            <td>95</td>
+
+                            <td>45 km/h</td>
+
+                            <td>
+                                <span class="badge success">
+                                    Low
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="view-btn"
+                                    onclick="viewRoad('Ring Road')">
+                                    View
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>Bus Stand Road</td>
+
+                            <td>210</td>
+
+                            <td>22 km/h</td>
+
+                            <td>
+                                <span class="badge warning">
+                                    Medium
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="view-btn"
+                                    onclick="viewRoad('Bus Stand Road')">
+                                    View
+                                </button>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTTOM CARDS -->
+
+        <section class="bottom-grid">
+
+
+            <div class="panel alert-panel">
+
+                <div class="panel-header">
+
+                    <h3>🚑 Emergency Alerts</h3>
+
+                    <span class="count">2</span>
+
+                </div>
+
+
+                <div class="alert-item">
+
+                    <i class="fa-solid fa-truck-medical"></i>
+
+                    <div>
+
+                        <strong>Ambulance Required</strong>
+
+                        <p>
+                            Near Temple Road
+                        </p>
+
+                    </div>
+
+                    <span>2 min</span>
+
+                </div>
+
+
+                <div class="alert-item">
+
+                    <i class="fa-solid fa-fire"></i>
+
+                    <div>
+
+                        <strong>Emergency Vehicle</strong>
+
+                        <p>
+                            Market Road
+                        </p>
+
+                    </div>
+
+                    <span>5 min</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel parking-panel">
+
+                <div class="panel-header">
+
+                    <h3>🅿 Parking Status</h3>
+
+                    <span class="count">120</span>
+
+                </div>
+
+
+                <div class="parking-item">
+
+                    <span>Festival Ground</span>
+
+                    <strong>45 slots</strong>
+
+                </div>
+
+
+                <div class="parking-item">
+
+                    <span>Market Parking</span>
+
+                    <strong>30 slots</strong>
+
+                </div>
+
+
+                <div class="parking-item">
+
+                    <span>Bus Stand Parking</span>
+
+                    <strong>25 slots</strong>
+
+                </div>
+
+
+                <div class="parking-item">
+
+                    <span>Temple Parking</span>
+
+                    <strong>20 slots</strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <p>
+                © 2026 AI Festival Traffic Management
+            </p>
+
+            <span>
+                AI Powered Smart Traffic System
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>
