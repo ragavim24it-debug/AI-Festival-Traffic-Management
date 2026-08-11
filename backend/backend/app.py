@@ -4,6 +4,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 # Allow frontend to communicate with backend
+app.register_blueprint(traffic_routes)
 CORS(app)
 
 
