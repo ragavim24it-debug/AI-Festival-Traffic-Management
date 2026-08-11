@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics | AI Festival Traffic Management</title>
+
+    <link rel="stylesheet" href="css/analytics.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🚦 AI Traffic
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+
+            <a href="prediction.html">
+                <i class="fa-solid fa-robot"></i>
+                AI Prediction
+            </a>
+
+            <a href="map.html">
+                <i class="fa-solid fa-map"></i>
+                Live Map
+            </a>
+
+            <a href="analytics.html" class="active">
+                <i class="fa-solid fa-chart-column"></i>
+                Analytics
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <section class="analytics-header">
+
+        <span>
+            <i class="fa-solid fa-chart-line"></i>
+            TRAFFIC INTELLIGENCE
+        </span>
+
+        <h1>Traffic Analytics</h1>
+
+        <p>
+            Analyze festival traffic patterns and AI-generated
+            traffic insights.
+        </p>
+
+    </section>
+
+
+    <!-- MAIN -->
+
+    <main class="analytics-container">
+
+
+        <!-- FILTER -->
+
+        <section class="filter-card">
+
+            <div>
+
+                <h2>
+                    <i class="fa-solid fa-filter"></i>
+                    Analytics Overview
+                </h2>
+
+                <p>
+                    Select a time period to view traffic analysis.
+                </p>
+
+            </div>
+
+            <select id="analyticsPeriod">
+
+                <option>Today</option>
+                <option>Yesterday</option>
+                <option>Last 7 Days</option>
+                <option>Festival Week</option>
+
+            </select>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="analytics-stats">
+
+            <div class="analytics-card">
+
+                <div class="analytics-icon blue">
+                    <i class="fa-solid fa-car"></i>
+                </div>
+
+                <span>Total Vehicles</span>
+
+                <h2>2,450</h2>
+
+                <small>
+                    <i class="fa-solid fa-arrow-up"></i>
+                    12.5% from yesterday
+                </small>
+
+            </div>
+
+
+            <div class="analytics-card">
+
+                <div class="analytics-icon red">
+                    <i class="fa-solid fa-road"></i>
+                </div>
+
+                <span>Peak Traffic</span>
+
+                <h2>5:00 PM</h2>
+
+                <small>
+                    <i class="fa-solid fa-circle"></i>
+                    Temple Road
+                </small>
+
+            </div>
+
+
+            <div class="analytics-card">
+
+                <div class="analytics-icon green">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
+
+                <span>Average Speed</span>
+
+                <h2>34 km/h</h2>
+
+                <small>
+                    <i class="fa-solid fa-arrow-up"></i>
+                    4.2% improvement
+                </small>
+
+            </div>
+
+
+            <div class="analytics-card">
+
+                <div class="analytics-icon orange">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+
+                <span>Average Delay</span>
+
+                <h2>18 min</h2>
+
+                <small>
+                    <i class="fa-solid fa-arrow-down"></i>
+                    6.8% reduction
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHARTS -->
+
+        <section class="charts-grid">
+
+
+            <!-- LINE CHART -->
+
+            <div class="chart-card large">
+
+                <div class="chart-heading">
+
+                    <div>
+
+                        <h3>Traffic Volume</h3>
+
+                        <p>
+                            Number of vehicles throughout the day
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
+                <div class="chart-box">
+
+                    <canvas id="volumeChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <!-- DOUGHNUT -->
+
+            <div class="chart-card">
+
+                <div class="chart-heading">
+
+                    <div>
+
+                        <h3>Traffic Distribution</h3>
+
+                        <p>
+                            Current traffic levels
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-chart-pie"></i>
+
+                </div>
+
+                <div class="pie-box">
+
+                    <canvas id="distributionChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <!-- BAR CHART -->
+
+            <div class="chart-card large">
+
+                <div class="chart-heading">
+
+                    <div>
+
+                        <h3>Road Comparison</h3>
+
+                        <p>
+                            Vehicle count by monitored road
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                </div>
+
+                <div class="chart-box">
+
+                    <canvas id="roadChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <!-- AI INSIGHTS -->
+
+            <div class="chart-card ai-card">
+
+                <div class="ai-heading">
+
+                    <i class="fa-solid fa-brain"></i>
+
+                    <div>
+
+                        <h3>AI Traffic Insights</h3>
+
+                        <p>
+                            Automated analysis
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="insight">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    <div>
+
+                        <strong>Peak Traffic</strong>
+
+                        <p>
+                            Traffic is highest between
+                            4 PM and 6 PM.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="insight">
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <div>
+
+                        <strong>Recommended Route</strong>
+
+                        <p>
+                            Ring Road can reduce congestion
+                            by approximately 25%.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="insight">
+
+                    <i class="fa-solid fa-square-parking"></i>
+
+                    <div>
+
+                        <strong>Parking Availability</strong>
+
+                        <p>
+                            Festival Ground has the highest
+                            parking availability.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TABLE -->
+
+        <section class="table-card">
+
+            <div class="table-heading">
+
+                <div>
+
+                    <h2>
+                        Road Performance
+                    </h2>
+
+                    <p>
+                        Current traffic performance
+                    </p>
+
+                </div>
+
+                <button onclick="exportData()">
+
+                    <i class="fa-solid fa-download"></i>
+                    Export
+
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Road</th>
+                            <th>Vehicles</th>
+                            <th>Speed</th>
+                            <th>Delay</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Temple Road</td>
+                            <td>245</td>
+                            <td>18 km/h</td>
+                            <td>35 min</td>
+
+                            <td>
+                                <span class="status high">
+                                    High
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>Market Road</td>
+                            <td>180</td>
+                            <td>28 km/h</td>
+                            <td>20 min</td>
+
+                            <td>
+                                <span class="status medium">
+                                    Medium
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>Ring Road</td>
+                            <td>95</td>
+                            <td>45 km/h</td>
+                            <td>8 min</td>
+
+                            <td>
+                                <span class="status low">
+                                    Low
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>Bus Stand Road</td>
+                            <td>210</td>
+                            <td>22 km/h</td>
+                            <td>28 min</td>
+
+                            <td>
+                                <span class="status high">
+                                    High
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>Hospital Road</td>
+                            <td>140</td>
+                            <td>35 km/h</td>
+                            <td>12 min</td>
+
+                            <td>
+                                <span class="status medium">
+                                    Medium
+                                </span>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 AI Festival Traffic Management
+        </p>
+
+        <span>
+            AI Powered Smart Traffic System
+        </span>
+
+    </footer>
+
+
+    <script src="js/analytics.js"></script>
+
+</body>
+
+</html>
