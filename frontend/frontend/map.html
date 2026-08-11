@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Live Map | AI Festival Traffic Management</title>
+
+    <link rel="stylesheet" href="css/map.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🚦 AI Traffic
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+
+            <a href="prediction.html">
+                <i class="fa-solid fa-robot"></i>
+                AI Prediction
+            </a>
+
+            <a href="map.html" class="active">
+                <i class="fa-solid fa-map-location-dot"></i>
+                Live Map
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-column"></i>
+                Analytics
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="map-header">
+
+        <span>
+            <i class="fa-solid fa-location-dot"></i>
+            REAL-TIME MONITORING
+        </span>
+
+        <h1>Live Traffic Map</h1>
+
+        <p>
+            Monitor traffic conditions, congested roads,
+            parking and emergency locations.
+        </p>
+
+    </section>
+
+
+    <!-- MAIN -->
+
+    <main class="map-container">
+
+
+        <!-- MAP CONTROL -->
+
+        <div class="map-controls">
+
+            <div class="control-title">
+
+                <h2>
+                    <i class="fa-solid fa-map"></i>
+                    Festival Traffic Area
+                </h2>
+
+                <p>
+                    Click a location to view traffic information.
+                </p>
+
+            </div>
+
+
+            <div class="map-buttons">
+
+                <button
+                    class="map-filter active"
+                    onclick="filterMap('all', this)">
+
+                    <i class="fa-solid fa-layer-group"></i>
+                    All
+
+                </button>
+
+
+                <button
+                    class="map-filter"
+                    onclick="filterMap('traffic', this)">
+
+                    <i class="fa-solid fa-car"></i>
+                    Traffic
+
+                </button>
+
+
+                <button
+                    class="map-filter"
+                    onclick="filterMap('parking', this)">
+
+                    <i class="fa-solid fa-square-parking"></i>
+                    Parking
+
+                </button>
+
+
+                <button
+                    class="map-filter"
+                    onclick="filterMap('emergency', this)">
+
+                    <i class="fa-solid fa-truck-medical"></i>
+                    Emergency
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MAP -->
+
+        <section class="map-area" id="mapArea">
+
+
+            <!-- ROAD LINES -->
+
+            <div class="road road-1"></div>
+
+            <div class="road road-2"></div>
+
+            <div class="road road-3"></div>
+
+            <div class="road road-4"></div>
+
+
+            <!-- LOCATION 1 -->
+
+            <button
+                class="location-marker traffic high"
+                data-type="traffic"
+                onclick="showLocation(
+                    'Temple Road',
+                    'HIGH',
+                    '245 vehicles',
+                    '18 km/h'
+                )">
+
+                <i class="fa-solid fa-car"></i>
+
+                <span>Temple Road</span>
+
+            </button>
+
+
+            <!-- LOCATION 2 -->
+
+            <button
+                class="location-marker traffic medium"
+                data-type="traffic"
+                onclick="showLocation(
+                    'Market Road',
+                    'MEDIUM',
+                    '180 vehicles',
+                    '28 km/h'
+                )">
+
+                <i class="fa-solid fa-car"></i>
+
+                <span>Market Road</span>
+
+            </button>
+
+
+            <!-- LOCATION 3 -->
+
+            <button
+                class="location-marker traffic low"
+                data-type="traffic"
+                onclick="showLocation(
+                    'Ring Road',
+                    'LOW',
+                    '95 vehicles',
+                    '45 km/h'
+                )">
+
+                <i class="fa-solid fa-car"></i>
+
+                <span>Ring Road</span>
+
+            </button>
+
+
+            <!-- PARKING -->
+
+            <button
+                class="location-marker parking"
+                data-type="parking"
+                onclick="showLocation(
+                    'Festival Ground Parking',
+                    'AVAILABLE',
+                    '45 slots',
+                    '32% occupied'
+                )">
+
+                <i class="fa-solid fa-square-parking"></i>
+
+                <span>Festival Parking</span>
+
+            </button>
+
+
+            <button
+                class="location-marker parking parking-two"
+                data-type="parking"
+                onclick="showLocation(
+                    'Market Parking',
+                    'AVAILABLE',
+                    '30 slots',
+                    '40% occupied'
+                )">
+
+                <i class="fa-solid fa-square-parking"></i>
+
+                <span>Market Parking</span>
+
+            </button>
+
+
+            <!-- EMERGENCY -->
+
+            <button
+                class="location-marker emergency"
+                data-type="emergency"
+                onclick="showLocation(
+                    'Emergency Vehicle',
+                    'ACTIVE',
+                    'Ambulance',
+                    'Priority Route'
+                )">
+
+                <i class="fa-solid fa-truck-medical"></i>
+
+                <span>Emergency</span>
+
+            </button>
+
+
+            <!-- MAP CENTER -->
+
+            <div class="festival-center">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <strong>Festival Ground</strong>
+
+            </div>
+
+
+            <!-- INFORMATION POPUP -->
+
+            <div
+                class="map-popup"
+                id="mapPopup">
+
+                <button
+                    class="close-popup"
+                    onclick="closePopup()">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+                <div class="popup-icon">
+
+                    <i
+                        id="popupIcon"
+                        class="fa-solid fa-car">
+                    </i>
+
+                </div>
+
+                <h3 id="popupTitle">
+                    Select Location
+                </h3>
+
+                <p id="popupStatus">
+                    Click a marker on the map.
+                </p>
+
+                <div class="popup-info">
+
+                    <div>
+
+                        <span>Vehicles / Slots</span>
+
+                        <strong id="popupVehicles">
+                            --
+                        </strong>
+
+                    </div>
+
+                    <div>
+
+                        <span>Speed / Occupancy</span>
+
+                        <strong id="popupSpeed">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LEGEND -->
+
+        <section class="legend-panel">
+
+            <h3>Map Legend</h3>
+
+            <div class="legend-items">
+
+                <div>
+                    <span class="legend-dot high-dot"></span>
+                    High Traffic
+                </div>
+
+                <div>
+                    <span class="legend-dot medium-dot"></span>
+                    Medium Traffic
+                </div>
+
+                <div>
+                    <span class="legend-dot low-dot"></span>
+                    Low Traffic
+                </div>
+
+                <div>
+                    <span class="legend-dot parking-dot"></span>
+                    Parking
+                </div>
+
+                <div>
+                    <span class="legend-dot emergency-dot"></span>
+                    Emergency
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ROAD STATUS -->
+
+        <section class="road-status">
+
+            <div class="status-card">
+
+                <i class="fa-solid fa-road"></i>
+
+                <div>
+
+                    <span>Roads Monitored</span>
+
+                    <strong>18</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-card">
+
+                <i class="fa-solid fa-car"></i>
+
+                <div>
+
+                    <span>Vehicles</span>
+
+                    <strong>2,450</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-card">
+
+                <i class="fa-solid fa-square-parking"></i>
+
+                <div>
+
+                    <span>Parking Slots</span>
+
+                    <strong>120</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-card">
+
+                <i class="fa-solid fa-truck-medical"></i>
+
+                <div>
+
+                    <span>Emergency Alerts</span>
+
+                    <strong>2</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 AI Festival Traffic Management
+        </p>
+
+        <span>
+            AI Powered Smart Traffic System
+        </span>
+
+    </footer>
+
+
+    <script src="js/map.js"></script>
+
+</body>
+
+</html>
